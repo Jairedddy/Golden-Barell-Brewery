@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDown, Award, Clock, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/hero-brewery.jpg';
+const heroImage = "/images/hero-brewery.jpg";
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeInLeft, float } from '@/lib/animations';
 

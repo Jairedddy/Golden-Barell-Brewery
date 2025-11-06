@@ -2,7 +2,7 @@ import React from 'react';
 import { Calendar, Clock, MapPin, Users, Music, Utensils, Award, PartyPopper } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 const OktoberfestImg = "/images/events/Oktoberfest.jpg";
-import brewmasterImage from '@/assets/events/Brewmaster.jpg';
+const brewmasterImage = "/images/events/Brewmaster.jpg";
 
 const EventsSection: React.FC = () => {
   const upcomingEvents = [

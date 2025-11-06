@@ -4,29 +4,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-// Import gallery images from gallery folder
-import fermentationTanks from '@/assets/gallery/fermentation tanks.jpg';
-import beerPoured from '@/assets/gallery/Beer being poured.jpg';
-import burgerBeer from '@/assets/gallery/Burger with Beer.jpg';
-import breweryAmbience from '@/assets/gallery/Brewery ambience.jpg';
-import flightBeers from '@/assets/gallery/Flight of Beers.jpg';
-import appetizerPlatter from '@/assets/gallery/appetizer platter.jpg';
-import barrelsTanks from '@/assets/gallery/Barrels and Tanks.jpg';
-import rusticBrewery from '@/assets/gallery/Rustic Brewery.jpg';
-import goldenBeer from '@/assets/gallery/Golden beer in Glass.jpg';
-import grilledSteak from '@/assets/gallery/Grilled Steak.jpg';
-import tapHandles from '@/assets/gallery/Brewery tap handles.jpg';
-import artisanPresentation from '@/assets/gallery/artian presentation.jpg';
-import brewingEquipment from '@/assets/gallery/24HL brewing equipment.jpg';
-import bottles from '@/assets/gallery/bottles.jpg';
-import brewery from '@/assets/gallery/brewery.jpg';
-import brewery2 from '@/assets/gallery/brewery 2.jpg';
-import breweryAmbience2 from '@/assets/gallery/brewery ambience 2.jpg';
-import cheers from '@/assets/gallery/cheers.jpg';
-import cheersFood from '@/assets/gallery/cheers and food.jpg';
-import wedgesBeer from '@/assets/gallery/wedges and beer.jpg';
-import lastImage from '@/assets/gallery/last.jpg';
-import lastSecondImage from '@/assets/gallery/last second.jpg';
+// Gallery image paths served from public
+const fermentationTanks = "/images/gallery/fermentation tanks.jpg";
+const beerPoured = "/images/gallery/Beer being poured.jpg";
+const burgerBeer = "/images/gallery/Burger with Beer.jpg";
+const breweryAmbience = "/images/gallery/Brewery ambience.jpg";
+const flightBeers = "/images/gallery/Flight of Beers.jpg";
+const appetizerPlatter = "/images/gallery/appetizer platter.jpg";
+const barrelsTanks = "/images/gallery/Barrels and Tanks.jpg";
+const rusticBrewery = "/images/gallery/Rustic Brewery.jpg";
+const goldenBeer = "/images/gallery/Golden beer in Glass.jpg";
+const grilledSteak = "/images/gallery/Grilled Steak.jpg";
+const tapHandles = "/images/gallery/Brewery tap handles.jpg";
+const artisanPresentation = "/images/gallery/artian presentation.jpg";
+const brewingEquipment = "/images/gallery/24HL brewing equipment.jpg";
+const bottles = "/images/gallery/bottles.jpg";
+const brewery = "/images/gallery/brewery.jpg";
+const brewery2 = "/images/gallery/brewery 2.jpg";
+const breweryAmbience2 = "/images/gallery/brewery ambience 2.jpg";
+const cheers = "/images/gallery/cheers.jpg";
+const cheersFood = "/images/gallery/cheers and food.jpg";
+const wedgesBeer = "/images/gallery/wedges and beer.jpg";
+const lastImage = "/images/gallery/last.jpg";
+const lastSecondImage = "/images/gallery/last second.jpg";
 
 const GallerySection: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
