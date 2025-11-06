@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brewery & Restaurant Design System - Craft Heritage with Modern Elegance */
+
+@layer base {
+  :root {
+    /* Core Background & Text */
+    --background: 28 15% 97%;
+    --foreground: 25 15% 15%;
+
+    /* Card & Surface Colors */
+    --card: 28 20% 95%;
+    --card-foreground: 25 15% 15%;
+
+    /* Popover Colors */
+    --popover: 28 20% 95%;
+    --popover-foreground: 25 15% 15%;
+
+    /* Primary Brand - Rich Amber/Gold */
+    --primary: 35 85% 45%;
+    --primary-foreground: 28 15% 97%;
+    --primary-muted: 35 60% 75%;
+
+    /* Secondary - Rich Brown */
+    --secondary: 25 35% 22%;
+    --secondary-foreground: 28 15% 97%;
+    --secondary-muted: 25 25% 50%;
+
+    /* Muted Tones */
+    --muted: 28 10% 88%;
+    --muted-foreground: 25 12% 35%;
+
+    /* Accent - Copper/Bronze */
+    --accent: 25 70% 35%;
+    --accent-foreground: 28 15% 97%;
+
+    /* Brewing Process Colors */
+    --brewing-gold: 45 90% 50%;
+    --brewing-amber: 30 85% 45%;
+    --brewing-copper: 20 75% 40%;
+    --brewing-bronze: 25 65% 35%;
+
+    /* Surface & Interaction */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 28 15% 97%;
+    
+    --border: 28 15% 85%;
+    --input: 28 20% 92%;
+    --ring: 35 85% 45%;
+
+    /* Design System Variables */
+    --radius: 0.75rem;
+    
+    /* Custom Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--brewing-amber)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--primary)) 50%, hsl(var(--accent)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(var(--foreground) / 0.1);
+    --shadow-glow: 0 0 40px hsl(var(--brewing-gold) / 0.3);
+
+    /* Typography Scale */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Core Background & Text - Dark Mode Brewery Theme */
+    --background: 25 15% 8%;
+    --foreground: 28 15% 95%;
+
+    /* Card & Surface Colors */
+    --card: 25 20% 12%;
+    --card-foreground: 28 15% 95%;
+
+    /* Popover Colors */
+    --popover: 25 20% 12%;
+    --popover-foreground: 28 15% 95%;
+
+    /* Primary Brand - Rich Amber/Gold (adjusted for dark) */
+    --primary: 40 80% 55%;
+    --primary-foreground: 25 15% 8%;
+    --primary-muted: 40 50% 35%;
+
+    /* Secondary - Rich Brown (adjusted) */
+    --secondary: 25 30% 28%;
+    --secondary-foreground: 28 15% 95%;
+    --secondary-muted: 25 20% 35%;
+
+    /* Muted Tones */
+    --muted: 25 10% 18%;
+    --muted-foreground: 28 8% 65%;
+
+    /* Accent - Copper/Bronze (adjusted) */
+    --accent: 25 65% 45%;
+    --accent-foreground: 25 15% 8%;
+
+    /* Brewing Process Colors - Dark Mode */
+    --brewing-gold: 45 85% 60%;
+    --brewing-amber: 30 80% 55%;
+    --brewing-copper: 20 70% 50%;
+    --brewing-bronze: 25 60% 45%;
+
+    /* Surface & Interaction */
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 25 15% 8%;
+    
+    --border: 25 15% 20%;
+    --input: 25 20% 15%;
+    --ring: 40 80% 55%;
+
+    /* Dark Mode Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--brewing-amber)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--primary)) 50%, hsl(var(--accent)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
+    
+    /* Dark Mode Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 40px hsl(var(--brewing-gold) / 0.4);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  /* Hero Section Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+  
+  /* Brewing Theme Specific Components */
+  .brewing-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+  
+  /* Text Styles */
+  .heading-display {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+    font-family: var(--font-display);
+  }
+  
+  .heading-section {
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight;
+    font-family: var(--font-display);
+  }
+  
+  .text-elegant {
+    @apply text-lg md:text-xl leading-relaxed;
+  }
+  
+  /* Interactive Elements */
+  .brew-card {
+    @apply bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-lg;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .brew-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  /* Animation Classes */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+}
+
+@layer utilities {
+  /* Custom Gradients */
+  .bg-gradient-brewing {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  /* Custom Shadows */
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-spring {
+    transition: var(--transition-spring);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes gentle-bounce {
+  0%, 100% { 
+    transform: translateY(0);
+    animation-timing-function: ease-in-out;
+  }
+  50% { 
+    transform: translateY(-10px);
+    animation-timing-function: ease-in-out;
+  }
+}
+
+.animate-gentle-bounce {
+  animation: gentle-bounce 2s ease-in-out infinite;
+}
