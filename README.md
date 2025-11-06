@@ -1,115 +1,143 @@
 # Craft Brew Nectar
 
-A modern, responsive brewery website built with React and Tyepscript. This project showcases a professional brewery wesbite with sections for hero content, about information, menu items, brewing process, and contact details.
+Golden Barrel’s modern, responsive brewery website built with React and TypeScript. It features rich content sections, production‑ready animations, and polished UI components tailored for a premium brewery brand.
 
-## Features
+## Live Site
 
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Dark Mode Support**: Toggle between light and dark themes
-- **Modern UI Components**: Built with Radix UI and custom components
-- **Smooth Navigation**: Smooth scrolling between sections
-- **Professional Layout**: Clean, brewery-focused design
-- **Typescript**: Full type safety throughout the application
+- Production URL: `https://goldenbarell.netlify.app/`
+
+## Highlights
+
+- **Modern UX**: Elegant layout, smooth scrolling, thoughtful spacing and typography
+- **Responsive**: Mobile‑first design that scales beautifully across breakpoints
+- **Dark Mode**: Persistent theme toggle with system preference support
+- **Polished Animations**: Framer Motion variants, scroll‑triggered reveals, micro‑interactions
+- **Optimized Assets**: Public-served images for reliable builds across environments
+- **Type Safety**: End‑to‑end TypeScript
 
 ## Tech Stack
 
-- **Frontend Framework**: React 18 with Typescript
+- **Framework**: React 18 + TypeScript
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS
-- **UI Components**: Radix UI primitives
-- **State Management**: React Query (TanStack Query)
+- **UI Primitives**: Radix (via custom UI components)
+- **State & Data**: TanStack Query (React Query)
 - **Icons**: Lucide React
-- **Routing**: React Router DOM
-- **Form Handling**: React Hook Form with Zod validation
 
-## Getting Started
+## Key Features
 
-### Prerequisites
+- **Navigation**: Responsive navbar with active states and theme toggle
+- **Hero**: Background zoom, staged heading reveals, CTA micro‑interactions
+- **About & Brewing**: Scroll‑triggered sections that reveal content progressively
+- **Menu**: Interactive cards and tabbed content
+- **Events**: Featured and regular events with rich cards and imagery
+- **Gallery**: Masonry‑style grid with lightbox and keyboard/touch navigation
+- **Contact**: Form and contact details with hover and focus states
 
-- Node.js (version 16 or higher)
-- npm or yarn package manager
+## Animations
 
-### Installation
+- Built with **Framer Motion** variants centralized in `src/lib/animations.ts`
+- Custom hook `src/hooks/useScrollAnimation.tsx` uses Intersection Observer
+- GPU‑friendly transforms (`transform`, `opacity`) and custom easing `[0.22, 1, 0.36, 1]`
+- Adjusted distances/durations for smoother motion and reduced jank
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd craft-brew-nectar
-```
+## Asset Handling (Netlify‑friendly)
 
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-The application will be available at `http://localhost:8080`
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run build:dev` - Build in development mode
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+- Images are served from `public/` to avoid case‑sensitive import issues during Linux builds
+- Example paths:
+  - Hero: `/images/hero-brewery.jpg`
+  - Events: `/images/events/Brewmaster.jpg`, `/images/events/Oktoberfest.jpg`
+  - Gallery: `/images/gallery/<filename>.jpg`
 
 ## Project Structure
 
 ```
 src/
-├── components/          # React components
-│   ├── ui/             # Reusable UI components
+├── components/
+│   ├── ui/                # Reusable UI primitives
 │   ├── AboutSection.tsx
 │   ├── BrewingSection.tsx
 │   ├── ContactSection.tsx
+│   ├── EventsSection.tsx
 │   ├── Footer.tsx
+│   ├── GallerySection.tsx
 │   ├── HeroSection.tsx
 │   ├── MenuSection.tsx
 │   └── Navigation.tsx
-├── assets/             # Static assets
-├── hooks/              # Custom React hooks
-├── lib/                # Utility functions
-├── pages/              # Page components
-└── App.tsx             # Main application component
+├── hooks/
+│   └── useScrollAnimation.tsx
+├── lib/
+│   └── animations.ts
+├── pages/
+│   ├── Index.tsx
+│   └── NotFound.tsx
+└── App.tsx
 ```
 
-## Key Components
+Public assets are located under:
 
-- **HeroSection**: Landing area with brewery branding
-- **AboutSection**: Information about the brewery
-- **MenuSection**: Beer and food menu display
-- **BrewingSection**: Brewing process information
-- **ContactSection**: Contact form and location details
-- **Navigation**: Responsive navigation with dark mode toggle
-- **Footer**: Site footer with additional links
+```
+public/
+└── images/
+    ├── hero-brewery.jpg
+    ├── events/
+    │   ├── Brewmaster.jpg
+    │   └── Oktoberfest.jpg
+    └── gallery/
+        └── ... all gallery images
+```
 
-## Configuration
+## Getting Started
 
-The project uses Vite as the build tool with the following configuration:
-- Development server runs on port 8080
-- Path aliases configured for clean imports (`@/` maps to `src/`)
-- TypeScript support with strict type checking
-- ESLint configuration for code quality
+### Prerequisites
+
+- Node.js 18+
+- npm (or yarn/pnpm)
+
+### Installation
+
+```bash
+git clone <repository-url>
+cd craft-brew-nectar
+npm install
+```
+
+### Local Development
+
+```bash
+npm run dev
+```
+
+By default Vite serves on `http://localhost:5173` (or the next available port). If you need a specific port, set `--port` in the dev script.
+
+### Build & Preview
+
+```bash
+npm run build
+npm run preview
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Deployment
+
+- The site is deployed on Netlify and published from the `dist/` directory after `npm run build`.
+- Ensure images live in `public/images/...` and are referenced by absolute paths (e.g. `/images/...`).
+
+## Configuration Notes
+
+- Path alias `@/` maps to `src/` for clean imports
+- Animations respect `prefers-reduced-motion`
+- Intersection Observer thresholds tuned for smooth entry and one‑time triggers
 
 ## Browser Support
 
-This project supports all modern browsers including:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and linting
-5. Submit a pull request
+Modern evergreen browsers:
+- Chrome, Firefox, Safari, Edge (latest)
 
 ## License
 
@@ -117,4 +145,4 @@ This project is private and proprietary.
 
 ## Support
 
-For support or questions, please contact the development team.
+For questions or support, please contact the development team.
