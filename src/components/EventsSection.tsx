@@ -1,7 +1,7 @@
 import React from 'react';
 import { Calendar, Clock, MapPin, Users, Music, Utensils, Award, PartyPopper } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import oktoberfestImage from '@/assets/events/Oktoberfest.jpg';
+const OktoberfestImg = "/images/events/Oktoberfest.jpg";
 import brewmasterImage from '@/assets/events/Brewmaster.jpg';
 
 const EventsSection: React.FC = () => {
@@ -13,7 +13,7 @@ const EventsSection: React.FC = () => {
       time: '5:00 PM - 11:00 PM',
       location: 'Main Brewery Hall',
       capacity: '200 Guests',
-      image: oktoberfestImage,
+      image: OktoberfestImg,
       description: 'Join us for an authentic Oktoberfest celebration featuring traditional German beers, live music, and hearty Bavarian cuisine.',
       icon: Music,
       featured: true,
