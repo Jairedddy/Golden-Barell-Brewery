@@ -178,6 +178,7 @@ const Footer: React.FC = () => {
             </p>
             
             <div className="flex items-center space-x-6">
+              <span className="text-secondary-foreground/50">Built by Jai Redddy</span>
               <button className="hover:text-primary transition-colors duration-200">
                 Privacy Policy
               </button>
