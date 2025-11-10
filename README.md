@@ -1,55 +1,34 @@
-# Craft Brew Nectar
+# Golden Barrel Brewery Website
 
-Golden Barrel’s modern, responsive brewery website built with React and TypeScript. It features rich content sections, production‑ready animations, and polished UI components tailored for a premium brewery brand.
+A modern, responsive brewery website for Golden Barrel built with React and TypeScript. It features polished UI, smooth animations, accessible components, and a rich set of content sections tailored for a premium brewery brand.
 
-## Live Site
+## 🍺 Live Site
 
-- Production URL: `https://goldenbarell.netlify.app/`
+Explore the production site at [https://goldenbarell.netlify.app/](https://goldenbarell.netlify.app/).
 
-## Highlights
+## 🚀 Overview
 
-- **Modern UX**: Elegant layout, smooth scrolling, thoughtful spacing and typography
-- **Responsive**: Mobile‑first design that scales beautifully across breakpoints
-- **Dark Mode**: Persistent theme toggle with system preference support
-- **Polished Animations**: Framer Motion variants, scroll‑triggered reveals, micro‑interactions
-- **Optimized Assets**: Public-served images for reliable builds across environments
-- **Type Safety**: End‑to‑end TypeScript
+Golden Barrel’s site delivers a refined user experience with an elegant layout, dark mode support, and micro‑interactions throughout. Sections include Hero, About, Brewing Process, Menu, Events, Gallery, and Contact—each crafted for performance and clarity.
 
-## Tech Stack
+### Key Features
 
-- **Framework**: React 18 + TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **UI Primitives**: Radix (via custom UI components)
-- **State & Data**: TanStack Query (React Query)
-- **Icons**: Lucide React
+1. **Modern UX**: Thoughtful spacing, typography, and color system with hover/focus states
+2. **Responsive Design**: Mobile‑first layout scaling cleanly across breakpoints
+3. **Dark Mode**: Persistent theme toggle with system preference detection
+4. **Animations**: Scroll‑triggered reveals and micro‑interactions powered by Framer Motion
+5. **Optimized Assets**: Public‑served images for reliable builds across environments
+6. **Type Safety**: End‑to‑end TypeScript with clear component boundaries
 
-## Key Features
+## 🛠️ Tech Stack
 
-- **Navigation**: Responsive navbar with active states and theme toggle
-- **Hero**: Background zoom, staged heading reveals, CTA micro‑interactions
-- **About & Brewing**: Scroll‑triggered sections that reveal content progressively
-- **Menu**: Interactive cards and tabbed content
-- **Events**: Featured and regular events with rich cards and imagery
-- **Gallery**: Masonry‑style grid with lightbox and keyboard/touch navigation
-- **Contact**: Form and contact details with hover and focus states
+- **Framework**: React 18 + TypeScript  
+- **Build Tool**: Vite  
+- **Styling**: Tailwind CSS  
+- **UI Primitives**: Radix (via custom UI)  
+- **State & Data**: TanStack Query (React Query)  
+- **Icons**: Lucide React  
 
-## Animations
-
-- Built with **Framer Motion** variants centralized in `src/lib/animations.ts`
-- Custom hook `src/hooks/useScrollAnimation.tsx` uses Intersection Observer
-- GPU‑friendly transforms (`transform`, `opacity`) and custom easing `[0.22, 1, 0.36, 1]`
-- Adjusted distances/durations for smoother motion and reduced jank
-
-## Asset Handling (Netlify‑friendly)
-
-- Images are served from `public/` to avoid case‑sensitive import issues during Linux builds
-- Example paths:
-  - Hero: `/images/hero-brewery.jpg`
-  - Events: `/images/events/Brewmaster.jpg`, `/images/events/Oktoberfest.jpg`
-  - Gallery: `/images/gallery/<filename>.jpg`
-
-## Project Structure
+## 📦 Project Structure
 
 ```
 src/
@@ -74,7 +53,7 @@ src/
 └── App.tsx
 ```
 
-Public assets are located under:
+Public assets are in:
 
 ```
 public/
@@ -87,14 +66,14 @@ public/
         └── ... all gallery images
 ```
 
-## Getting Started
+## 🧑‍💻 Local Development
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 18+  
 - npm (or yarn/pnpm)
 
-### Installation
+### Setup
 
 ```bash
 git clone <repository-url>
@@ -102,13 +81,13 @@ cd craft-brew-nectar
 npm install
 ```
 
-### Local Development
+### Run Dev Server
 
 ```bash
 npm run dev
 ```
 
-By default Vite serves on `http://localhost:5173` (or the next available port). If you need a specific port, set `--port` in the dev script.
+Vite serves on `http://localhost:5173` (or the next available port). To use a specific port, add `--port` to the dev script.
 
 ### Build & Preview
 
@@ -123,26 +102,32 @@ npm run preview
 npm run lint
 ```
 
-## Deployment
+## ✨ Animations
 
-- The site is deployed on Netlify and published from the `dist/` directory after `npm run build`.
-- Ensure images live in `public/images/...` and are referenced by absolute paths (e.g. `/images/...`).
+- Centralized Framer Motion variants in `src/lib/animations.ts`  
+- `useScrollAnimation` hook uses Intersection Observer for performant triggers  
+- GPU‑friendly transforms and custom easing `[0.22, 1, 0.36, 1]`  
 
-## Configuration Notes
+## 🚢 Deployment
 
-- Path alias `@/` maps to `src/` for clean imports
-- Animations respect `prefers-reduced-motion`
-- Intersection Observer thresholds tuned for smooth entry and one‑time triggers
+- Deployed on Netlify; publish the `dist/` directory after `npm run build`.  
+- Reference images via absolute paths from `public/` (e.g., `/images/...`).  
 
-## Browser Support
+## ⚙️ Configuration Notes
+
+- Path alias `@/` maps to `src/`  
+- Respects `prefers-reduced-motion`  
+- Intersection Observer thresholds tuned for smooth entry and one‑time triggers  
+
+## 🌐 Browser Support
 
 Modern evergreen browsers:
 - Chrome, Firefox, Safari, Edge (latest)
 
-## License
+## 🔒 License
 
 This project is private and proprietary.
 
-## Support
+---
 
-For questions or support, please contact the development team.
+Built by Jai Reddy
