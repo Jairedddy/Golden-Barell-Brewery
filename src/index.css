@@ -279,6 +279,11 @@
     );
   }
   
+  /* Radial Gradient for Light Leaks */
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+  
   /* Custom Shadows */
   .shadow-elegant {
     box-shadow: var(--shadow-elegant);
