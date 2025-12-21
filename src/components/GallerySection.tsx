@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { staggerContainer } from '@/lib/animations';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import SectionHeader from '@/components/SectionHeader';
 
@@ -30,8 +29,6 @@ const lastImage = "/images/gallery/last.jpg";
 const lastSecondImage = "/images/gallery/last second.jpg";
 
 const GallerySection: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const headerAnimation = useScrollAnimation();
   const galleryAnimation = useScrollAnimation();
 
   const galleryImages = [
@@ -196,32 +193,6 @@ const GallerySection: React.FC = () => {
     }
   ];
 
-  const openLightbox = (id: number) => {
-    setSelectedImage(id);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeLightbox = () => {
-    setSelectedImage(null);
-    document.body.style.overflow = 'unset';
-  };
-
-  const navigateImage = (direction: 'prev' | 'next') => {
-    if (selectedImage === null) return;
-    
-    const currentIndex = galleryImages.findIndex(img => img.id === selectedImage);
-    let newIndex;
-    
-    if (direction === 'prev') {
-      newIndex = currentIndex === 0 ? galleryImages.length - 1 : currentIndex - 1;
-    } else {
-      newIndex = currentIndex === galleryImages.length - 1 ? 0 : currentIndex + 1;
-    }
-    
-    setSelectedImage(galleryImages[newIndex].id);
-  };
-
-  const selectedImageData = galleryImages.find(img => img.id === selectedImage);
 
   // Helper function to get grid classes based on image size
   const getGridClasses = (size: string) => {
@@ -274,42 +245,79 @@ const GallerySection: React.FC = () => {
           {galleryImages.map((image, index) => (
             <motion.div
               key={image.id}
-              className={`relative group cursor-pointer overflow-hidden rounded-xl ${getGridClasses(image.size)}`}
-              onClick={() => openLightbox(image.id)}
+              className={`relative group overflow-hidden rounded-xl ${getGridClasses(image.size)}`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={galleryAnimation.isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              transition={{ delay: index * 0.05 }}
-              whileHover={{ scale: 1.02, zIndex: 10 }}
+              transition={{ delay: index * 0.05, type: "spring", stiffness: 100 }}
+              whileHover={{ 
+                scale: 1.03,
+                y: -8,
+                zIndex: 10,
+                transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+              }}
+              style={{ perspective: 1000 }}
             >
-              {/* Image */}
-              <div className={`relative overflow-hidden ${getHeightClasses(image.size)}`}>
+              {/* Gold Border Accent on Hover */}
+              <motion.div
+                className="absolute inset-0 rounded-xl border-2 border-primary/0 group-hover:border-primary/60 z-20 pointer-events-none"
+                initial={false}
+                transition={{ duration: 0.4 }}
+              />
+              
+              {/* Glow Effect */}
+              <motion.div
+                className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 pointer-events-none z-10"
+                style={{
+                  boxShadow: '0 0 30px hsl(45, 85%, 60% / 0.4)',
+                }}
+                transition={{ duration: 0.4 }}
+              />
+
+              {/* Image Container */}
+              <div className={`relative overflow-hidden rounded-xl ${getHeightClasses(image.size)}`}>
                 <motion.img
                   src={image.url}
                   alt={image.alt}
                   className="w-full h-full object-cover object-center"
                   loading="lazy"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
+                  whileHover={{ 
+                    scale: 1.15,
+                    rotate: 1
+                  }}
+                  transition={{ 
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
                 />
                 
-                {/* Overlay */}
+                {/* Gradient Overlay with Animation */}
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+                  className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.4 }}
                 >
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <motion.span 
-                      className="inline-block bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium"
-                      initial={{ y: 20, opacity: 0 }}
-                      whileHover={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {image.category}
-                    </motion.span>
-                  </div>
+                  {/* Shimmer Effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                    initial={{ x: '-100%', rotate: -45 }}
+                    whileHover={{ x: '200%' }}
+                    transition={{ duration: 0.8, ease: 'easeInOut' }}
+                  />
                 </motion.div>
+
+
+                {/* Corner Accent */}
+                <motion.div
+                  className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-primary/0 group-hover:border-primary/60 rounded-tr-xl"
+                  initial={false}
+                  transition={{ duration: 0.4 }}
+                />
+                <motion.div
+                  className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-primary/0 group-hover:border-primary/60 rounded-bl-xl"
+                  initial={false}
+                  transition={{ duration: 0.4 }}
+                />
               </div>
             </motion.div>
           ))}
@@ -337,93 +345,6 @@ const GallerySection: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Lightbox Modal */}
-      <AnimatePresence>
-        {selectedImage !== null && selectedImageData && (
-          <motion.div 
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
-            onClick={closeLightbox}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Close Button */}
-            <motion.button
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 text-white hover:text-primary transition-colors duration-200 z-10"
-              aria-label="Close lightbox"
-              whileHover={{ scale: 1.1, rotate: 90 }}
-              transition={{ duration: 0.2 }}
-            >
-              <X className="h-8 w-8" />
-            </motion.button>
-
-          {/* Previous Button */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              navigateImage('prev');
-            }}
-            className="absolute left-4 text-white hover:text-primary transition-colors duration-200 z-10 hidden md:block"
-            aria-label="Previous image"
-          >
-            <svg className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          {/* Next Button */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              navigateImage('next');
-            }}
-            className="absolute right-4 text-white hover:text-primary transition-colors duration-200 z-10 hidden md:block"
-            aria-label="Next image"
-          >
-            <svg className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* Image */}
-          <motion.div 
-            className="relative max-w-7xl max-h-[90vh] w-full"
-            onClick={(e) => e.stopPropagation()}
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <img
-              src={selectedImageData.url}
-              alt={selectedImageData.alt}
-              className="w-full h-full object-contain rounded-lg"
-            />
-            
-            {/* Image Info */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
-              <p className="text-white text-lg">{selectedImageData.alt}</p>
-              <span className="inline-block mt-2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-                {selectedImageData.category}
-              </span>
-            </div>
-          </motion.div>
-
-          {/* Mobile Navigation Hints */}
-          <motion.div 
-            className="absolute bottom-4 left-0 right-0 text-center text-white/60 text-sm md:hidden"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            Swipe or tap sides to navigate
-          </motion.div>
-        </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };
