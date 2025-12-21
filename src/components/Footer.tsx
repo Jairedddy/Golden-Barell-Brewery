@@ -51,11 +51,6 @@ const Footer: React.FC = () => {
               <Beer className="h-8 w-8 text-primary" />
               <span className="text-2xl font-display font-bold">Golden Barrel</span>
             </div>
-            
-            <p className="text-secondary-foreground/80 leading-relaxed">
-              Crafting exceptional beers and memorable dining experiences since 2018. 
-              Where community, quality, and tradition come together.
-            </p>
 
             {/* Contact Info */}
             <div className="space-y-3">
@@ -139,31 +134,6 @@ const Footer: React.FC = () => {
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Newsletter Section */}
-      <div className="border-t border-secondary-foreground/20">
-        <div className="brewing-container py-8">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="font-semibold text-lg mb-2">Stay Connected</h3>
-              <p className="text-secondary-foreground/80 text-sm">
-                Get updates on new brews, events, and special offers.
-              </p>
-            </div>
-            
-            <div className="flex w-full lg:w-auto max-w-md">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 bg-secondary-foreground/10 border border-secondary-foreground/20 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary text-secondary-foreground placeholder:text-secondary-foreground/60"
-              />
-              <button className="bg-primary text-primary-foreground px-6 py-2 rounded-r-lg hover:bg-primary/90 transition-colors duration-200 font-medium">
-                Subscribe
-              </button>
             </div>
           </div>
         </div>
