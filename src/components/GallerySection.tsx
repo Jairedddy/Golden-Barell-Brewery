@@ -3,6 +3,7 @@ import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import SectionHeader from '@/components/SectionHeader';
 
 // Gallery image paths served from public
 const fermentationTanks = "/images/gallery/fermentation tanks.jpg";
@@ -255,21 +256,12 @@ const GallerySection: React.FC = () => {
     <section id="gallery" className="section-padding bg-muted/30">
       <div className="brewing-container">
         {/* Section Header */}
-        <motion.div 
-          ref={headerAnimation.ref}
-          initial="hidden"
-          animate={headerAnimation.isVisible ? "visible" : "hidden"}
-          variants={fadeInUp}
-          className="text-center mb-16"
-        >
-          <h2 className="heading-section text-foreground mb-6">
-            Gallery
-          </h2>
-          <p className="text-elegant text-muted-foreground max-w-3xl mx-auto">
-            Step inside Golden Barrel through our lens. From our gleaming copper tanks to mouthwatering dishes 
-            and the warm atmosphere that makes us special, discover what awaits you.
-          </p>
-        </motion.div>
+        <SectionHeader
+          subtitle="Visual Journey"
+          title="Gallery"
+          description="Step inside Golden Barrel through our lens. From our gleaming copper tanks to mouthwatering dishes and the warm atmosphere that makes us special, discover what awaits you."
+          className="mb-16"
+        />
 
         {/* Gallery Grid - Collage Style */}
         <motion.div 

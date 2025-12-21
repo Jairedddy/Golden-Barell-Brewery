@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeInLeft, fadeInRight, scaleIn, staggerContainer } from '@/lib/animations';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import SectionHeader from '@/components/SectionHeader';
 
 const AboutSection: React.FC = () => {
   const headerAnimation = useScrollAnimation();
@@ -60,23 +61,12 @@ const AboutSection: React.FC = () => {
     <section id="about" className="section-padding bg-background">
       <div className="brewing-container">
         {/* Section Header */}
-        <motion.div 
-          ref={headerAnimation.ref}
-          initial="hidden"
-          animate={headerAnimation.isVisible ? "visible" : "hidden"}
-          variants={fadeInUp}
-          className="text-center mb-16"
-        >
-          <h2 className="heading-section text-foreground mb-6">
-            Our Story
-          </h2>
-          <p className="text-elegant text-muted-foreground max-w-3xl mx-auto">
-            Founded in 2018 by Marcus Thompson and Elena Rodriguez, Golden Barrel began as a dream 
-            to create a space where exceptional craft beer meets culinary excellence. Today, we're 
-            proud to be a cornerstone of our community, bringing people together over great food 
-            and even better beer.
-          </p>
-        </motion.div>
+        <SectionHeader
+          subtitle="About Us"
+          title="Our Story"
+          description="Founded in 2018 by Marcus Thompson and Elena Rodriguez, Golden Barrel began as a dream to create a space where exceptional craft beer meets culinary excellence. Today, we're proud to be a cornerstone of our community, bringing people together over great food and even better beer."
+          className="mb-16"
+        />
 
         {/* Story Content */}
         <div ref={storyAnimation.ref} className="grid lg:grid-cols-2 gap-12 items-center mb-20">

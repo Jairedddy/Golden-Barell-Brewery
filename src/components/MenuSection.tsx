@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import SectionHeader from '@/components/SectionHeader';
 
 const MenuSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState('appetizers');
@@ -288,21 +289,12 @@ const MenuSection: React.FC = () => {
     <section id="menu" className="section-padding bg-muted/30">
       <div className="brewing-container">
         {/* Section Header */}
-        <motion.div 
-          ref={headerAnimation.ref}
-          initial="hidden"
-          animate={headerAnimation.isVisible ? "visible" : "hidden"}
-          variants={fadeInUp}
-          className="text-center mb-12"
-        >
-          <h2 className="heading-section text-foreground mb-6">
-            Our Menu
-          </h2>
-          <p className="text-elegant text-muted-foreground max-w-2xl mx-auto">
-            Discover our carefully crafted selection of artisan beers and farm-to-table cuisine, 
-            each dish thoughtfully paired to enhance your dining experience.
-          </p>
-        </motion.div>
+        <SectionHeader
+          subtitle="Culinary Excellence"
+          title="Our Menu"
+          description="Discover our carefully crafted selection of artisan beers and farm-to-table cuisine, each dish thoughtfully paired to enhance your dining experience."
+          className="mb-12"
+        />
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">

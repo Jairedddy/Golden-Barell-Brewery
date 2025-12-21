@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: ["class"],
+  darkMode: "class",
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
@@ -61,6 +61,49 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Brand Colors - Liquid Gold Design System
+        gold: {
+          50: "hsl(45, 100%, 95%)",
+          100: "hsl(45, 95%, 90%)",
+          200: "hsl(45, 90%, 80%)",
+          300: "hsl(45, 85%, 70%)",
+          400: "hsl(45, 85%, 60%)",
+          500: "hsl(45, 85%, 60%)",
+          600: "hsl(40, 80%, 55%)",
+          700: "hsl(40, 75%, 50%)",
+          800: "hsl(35, 70%, 45%)",
+          900: "hsl(30, 65%, 40%)",
+        },
+        amber: {
+          50: "hsl(30, 100%, 95%)",
+          100: "hsl(30, 95%, 90%)",
+          200: "hsl(30, 90%, 80%)",
+          300: "hsl(30, 85%, 70%)",
+          400: "hsl(30, 80%, 60%)",
+          500: "hsl(30, 80%, 55%)",
+          600: "hsl(30, 75%, 50%)",
+          700: "hsl(25, 70%, 45%)",
+          800: "hsl(25, 65%, 40%)",
+          900: "hsl(20, 60%, 35%)",
+        },
+        charcoal: {
+          50: "hsl(25, 15%, 20%)",
+          100: "hsl(25, 15%, 18%)",
+          200: "hsl(25, 15%, 15%)",
+          300: "hsl(25, 15%, 12%)",
+          400: "hsl(25, 15%, 10%)",
+          500: "hsl(25, 15%, 8%)",
+          600: "hsl(25, 15%, 6%)",
+          700: "hsl(25, 15%, 5%)",
+          800: "hsl(25, 15%, 4%)",
+          900: "hsl(25, 15%, 3%)",
+        },
+      },
+      spacing: {
+        // Custom spacing tokens
+        "section": "4rem",
+        "section-lg": "6rem",
+        "section-xl": "8rem",
       },
       borderRadius: {
         lg: "var(--radius)",

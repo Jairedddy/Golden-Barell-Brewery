@@ -7,6 +7,7 @@ import { useToast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from '@/lib/animations';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import SectionHeader from '@/components/SectionHeader';
 
 const ContactSection: React.FC = () => {
   const { toast } = useToast();
@@ -81,21 +82,12 @@ const ContactSection: React.FC = () => {
     <section id="contact" className="section-padding bg-muted/30">
       <div className="brewing-container">
         {/* Section Header */}
-        <motion.div 
-          ref={headerAnimation.ref}
-          initial="hidden"
-          animate={headerAnimation.isVisible ? "visible" : "hidden"}
-          variants={fadeInUp}
-          className="text-center mb-16"
-        >
-          <h2 className="heading-section text-foreground mb-6">
-            Get In Touch
-          </h2>
-          <p className="text-elegant text-muted-foreground max-w-2xl mx-auto">
-            We'd love to hear from you. Whether you have questions about our beers, 
-            want to book an event, or just want to say hello, reach out anytime.
-          </p>
-        </motion.div>
+        <SectionHeader
+          subtitle="Contact Us"
+          title="Get In Touch"
+          description="We'd love to hear from you. Whether you have questions about our beers, want to book an event, or just want to say hello, reach out anytime."
+          className="mb-16"
+        />
 
         <div ref={contactAnimation.ref} className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}

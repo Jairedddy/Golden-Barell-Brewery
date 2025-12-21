@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Clock, MapPin, Users, Music, Utensils, Award, PartyPopper } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import SectionHeader from '@/components/SectionHeader';
 const OktoberfestImg = "/images/events/Oktoberfest.jpg";
 const brewmasterImage = "/images/events/Brewmaster.jpg";
 
@@ -90,15 +91,12 @@ const EventsSection: React.FC = () => {
     <section id="events" className="section-padding bg-background">
       <div className="brewing-container">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="heading-section text-foreground mb-6">
-            Events & Experiences
-          </h2>
-          <p className="text-elegant text-muted-foreground max-w-3xl mx-auto">
-            From intimate tastings to lively celebrations, there's always something happening at Golden Barrel. 
-            Join us for unforgettable experiences that bring our community together.
-          </p>
-        </div>
+        <SectionHeader
+          subtitle="Join Us"
+          title="Events & Experiences"
+          description="From intimate tastings to lively celebrations, there's always something happening at Golden Barrel. Join us for unforgettable experiences that bring our community together."
+          className="mb-16"
+        />
 
         {/* Featured Events */}
         <div className="mb-12">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,31 +16,10 @@ import Footer from './components/Footer';
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
   useEffect(() => {
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('darkMode');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    setDarkMode(savedTheme ? JSON.parse(savedTheme) : prefersDark);
+    // Always apply dark theme
+    document.documentElement.classList.add('dark');
   }, []);
-
-  useEffect(() => {
-    // Apply theme to document
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    
-    // Save theme preference
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -48,7 +27,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <div className="min-h-screen bg-background text-foreground">
-          <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <Navigation />
           <main>
             <HeroSection />
             <AboutSection />

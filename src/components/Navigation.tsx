@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Beer, Moon, Sun } from 'lucide-react';
+import { Menu, X, Beer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface NavigationProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}
-
-const Navigation: React.FC<NavigationProps> = ({ darkMode, toggleDarkMode }) => {
+const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -115,41 +110,8 @@ const Navigation: React.FC<NavigationProps> = ({ darkMode, toggleDarkMode }) => 
               })}
             </div>
 
-            {/* Dark Mode Toggle & Mobile Menu Button */}
+            {/* Mobile Menu Button */}
             <div className="flex items-center space-x-4">
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={toggleDarkMode}
-                  className="hover:bg-primary/10"
-                >
-                  <AnimatePresence mode="wait">
-                    {darkMode ? (
-                      <motion.div
-                        key="sun"
-                        initial={{ rotate: -90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: 90, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <Sun className="h-5 w-5" />
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="moon"
-                        initial={{ rotate: 90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: -90, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <Moon className="h-5 w-5" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </Button>
-              </motion.div>
-              
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <Button
                   variant="ghost"

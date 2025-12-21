@@ -3,6 +3,7 @@ import { Droplets, Thermometer, Clock, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer, scaleIn } from '@/lib/animations';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import SectionHeader from '@/components/SectionHeader';
 
 const BrewingSection: React.FC = () => {
   const headerAnimation = useScrollAnimation();
@@ -56,22 +57,12 @@ const BrewingSection: React.FC = () => {
     <section id="brewing" className="section-padding bg-background">
       <div className="brewing-container">
         {/* Section Header */}
-        <motion.div 
-          ref={headerAnimation.ref}
-          initial="hidden"
-          animate={headerAnimation.isVisible ? "visible" : "hidden"}
-          variants={fadeInUp}
-          className="text-center mb-16"
-        >
-          <h2 className="heading-section text-foreground mb-6">
-            Our Brewing Process
-          </h2>
-          <p className="text-elegant text-muted-foreground max-w-3xl mx-auto">
-            Every Golden Barrel beer is crafted using time-honored techniques and the finest 
-            ingredients. Our master brewer oversees each step to ensure exceptional quality 
-            and consistency in every pour.
-          </p>
-        </motion.div>
+        <SectionHeader
+          subtitle="Craft & Quality"
+          title="Our Brewing Process"
+          description="Every Golden Barrel beer is crafted using time-honored techniques and the finest ingredients. Our master brewer oversees each step to ensure exceptional quality and consistency in every pour."
+          className="mb-16"
+        />
 
         {/* Brewing Steps */}
         <motion.div 

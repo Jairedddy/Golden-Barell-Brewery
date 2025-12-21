@@ -8,13 +8,13 @@ Explore the production site at [https://goldenbarell.netlify.app/](https://golde
 
 ## 🚀 Overview
 
-Golden Barrel’s site delivers a refined user experience with an elegant layout, dark mode support, and micro‑interactions throughout. Sections include Hero, About, Brewing Process, Menu, Events, Gallery, and Contact—each crafted for performance and clarity.
+Golden Barrel's site delivers a refined user experience with an elegant dark theme layout and micro‑interactions throughout. Sections include Hero, About, Brewing Process, Menu, Events, Gallery, and Contact—each crafted for performance and clarity.
 
 ### Key Features
 
 1. **Modern UX**: Thoughtful spacing, typography, and color system with hover/focus states
 2. **Responsive Design**: Mobile‑first layout scaling cleanly across breakpoints
-3. **Dark Mode**: Persistent theme toggle with system preference detection
+3. **Dark Theme**: Premium dark color palette optimized for brewery aesthetics
 4. **Animations**: Scroll‑triggered reveals and micro‑interactions powered by Framer Motion
 5. **Optimized Assets**: Public‑served images for reliable builds across environments
 6. **Type Safety**: End‑to‑end TypeScript with clear component boundaries
