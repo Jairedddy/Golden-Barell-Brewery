@@ -1,10 +1,34 @@
 import React from 'react';
-import { Users, Heart, Leaf, Trophy } from 'lucide-react';
+import { Users, Heart, Leaf, Trophy, Clock, Calendar, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import {
+  BarChart,
+  Bar,
+  AreaChart,
+  Area,
+  PieChart,
+  Pie,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
+} from 'recharts';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from '@/components/ui/chart';
 import { fadeInUp, fadeInLeft, fadeInRight, scaleIn, staggerContainer } from '@/lib/animations';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import SectionHeader from '@/components/SectionHeader';
+import MotionInView from '@/components/MotionInView';
+import {
+  mostLovedStyles,
+  peakVisitingHours,
+  seasonalFavorites,
+} from '@/lib/mock-stats';
 
 const AboutSection: React.FC = () => {
   const headerAnimation = useScrollAnimation();
@@ -12,6 +36,63 @@ const AboutSection: React.FC = () => {
   const statsAnimation = useScrollAnimation();
   const valuesAnimation = useScrollAnimation();
   const teamAnimation = useScrollAnimation();
+  const chartsAnimation = useScrollAnimation();
+
+  // Chart configurations
+  const mostLovedConfig = {
+    ipa: {
+      label: 'IPA',
+      color: 'hsl(45, 85%, 60%)',
+    },
+    stout: {
+      label: 'Stout',
+      color: 'hsl(30, 80%, 55%)',
+    },
+    lager: {
+      label: 'Lager',
+      color: 'hsl(40, 75%, 50%)',
+    },
+    paleAle: {
+      label: 'Pale Ale',
+      color: 'hsl(35, 70%, 45%)',
+    },
+    wheat: {
+      label: 'Wheat',
+      color: 'hsl(25, 65%, 40%)',
+    },
+    porter: {
+      label: 'Porter',
+      color: 'hsl(20, 60%, 35%)',
+    },
+  };
+
+  const seasonalConfig = {
+    spring: {
+      label: 'Spring',
+      color: 'hsl(142, 76%, 36%)',
+    },
+    summer: {
+      label: 'Summer',
+      color: 'hsl(45, 85%, 60%)',
+    },
+    fall: {
+      label: 'Fall',
+      color: 'hsl(30, 80%, 55%)',
+    },
+    winter: {
+      label: 'Winter',
+      color: 'hsl(217, 91%, 60%)',
+    },
+  };
+
+  const COLORS = [
+    'hsl(45, 85%, 60%)',
+    'hsl(30, 80%, 55%)',
+    'hsl(40, 75%, 50%)',
+    'hsl(35, 70%, 45%)',
+    'hsl(25, 65%, 40%)',
+    'hsl(20, 60%, 35%)',
+  ];
 
   const values = [
     {
@@ -64,7 +145,6 @@ const AboutSection: React.FC = () => {
         <SectionHeader
           subtitle="About Us"
           title="Our Story"
-          description="Founded in 2018 by Marcus Thompson and Elena Rodriguez, Golden Barrel began as a dream to create a space where exceptional craft beer meets culinary excellence. Today, we're proud to be a cornerstone of our community, bringing people together over great food and even better beer."
           className="mb-16"
         />
 
@@ -134,6 +214,161 @@ const AboutSection: React.FC = () => {
                 </motion.div>
               </div>
             </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Statistics Charts */}
+        <div ref={chartsAnimation.ref} className="mb-20 mt-16">
+          <motion.h3 
+            className="text-2xl lg:text-3xl font-display font-semibold text-center text-foreground mb-12"
+            initial="hidden"
+            animate={chartsAnimation.isVisible ? "visible" : "hidden"}
+            variants={fadeInUp}
+          >
+            The Numbers Tell Our Story
+          </motion.h3>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate={chartsAnimation.isVisible ? "visible" : "hidden"}
+            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          >
+            {/* Card 1: Most Loved Styles */}
+            <MotionInView variants={fadeInUp}>
+              <motion.div
+                className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 shadow-lg transition-all hover:shadow-xl"
+                whileHover={{ y: -4 }}
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <BarChart3 className="h-5 w-5 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">Most Loved Styles</h3>
+                  </div>
+                </div>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  Our community's top picks this season
+                </p>
+                <ChartContainer config={mostLovedConfig} className="h-[200px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={mostLovedStyles} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.2} />
+                      <XAxis
+                        dataKey="name"
+                        tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                        tickLine={{ stroke: 'hsl(var(--border))' }}
+                      />
+                      <YAxis
+                        tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                        tickLine={{ stroke: 'hsl(var(--border))' }}
+                      />
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <Bar
+                        dataKey="percentage"
+                        fill="hsl(45, 85%, 60%)"
+                        radius={[4, 4, 0, 0]}
+                        animationDuration={1500}
+                        animationEasing="ease-out"
+                      >
+                        {mostLovedStyles.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </ChartContainer>
+              </motion.div>
+            </MotionInView>
+
+            {/* Card 2: Peak Visiting Hours */}
+            <MotionInView variants={fadeInUp} delay={0.1}>
+              <motion.div
+                className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 shadow-lg transition-all hover:shadow-xl"
+                whileHover={{ y: -4 }}
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-5 w-5 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">Peak Hours</h3>
+                  </div>
+                </div>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  When the taproom comes alive
+                </p>
+                <ChartContainer config={{ visitors: { label: 'Visitors', color: 'hsl(45, 85%, 60%)' } }} className="h-[200px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={peakVisitingHours} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                      <defs>
+                        <linearGradient id="colorVisitors" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="hsl(45, 85%, 60%)" stopOpacity={0.8} />
+                          <stop offset="95%" stopColor="hsl(45, 85%, 60%)" stopOpacity={0.1} />
+                        </linearGradient>
+                      </defs>
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.2} />
+                      <XAxis
+                        dataKey="label"
+                        tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                        tickLine={{ stroke: 'hsl(var(--border))' }}
+                      />
+                      <YAxis
+                        tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                        tickLine={{ stroke: 'hsl(var(--border))' }}
+                      />
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <Area
+                        type="monotone"
+                        dataKey="visitors"
+                        stroke="hsl(45, 85%, 60%)"
+                        fillOpacity={1}
+                        fill="url(#colorVisitors)"
+                        animationDuration={1500}
+                        animationEasing="ease-out"
+                      />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </ChartContainer>
+              </motion.div>
+            </MotionInView>
+
+            {/* Card 3: Seasonal Favorites */}
+            <MotionInView variants={fadeInUp} delay={0.2}>
+              <motion.div
+                className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 shadow-lg transition-all hover:shadow-xl"
+                whileHover={{ y: -4 }}
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-5 w-5 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">Seasonal Trends</h3>
+                  </div>
+                </div>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  Preferences change with the seasons
+                </p>
+                <ChartContainer config={seasonalConfig} className="h-[200px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={seasonalFavorites}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        label={({ season, percentage }) => `${season}: ${percentage}%`}
+                        outerRadius={70}
+                        fill="#8884d8"
+                        dataKey="percentage"
+                        animationDuration={1500}
+                        animationEasing="ease-out"
+                      >
+                        {seasonalFavorites.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                      </Pie>
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </ChartContainer>
+              </motion.div>
+            </MotionInView>
           </motion.div>
         </div>
 
