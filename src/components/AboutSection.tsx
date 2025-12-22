@@ -161,11 +161,6 @@ const AboutSection: React.FC = () => {
               people together. What began as weekend experiments has grown into a full-scale 
               brewery and restaurant, but our core values remain unchanged.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              We combine time-honored brewing techniques with innovative flavors, sourcing the 
-              finest ingredients from local farms and producers. Every pint tells the story of 
-              our dedication to craft, community, and quality.
-            </p>
           </motion.div>
           
           <motion.div 
