@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navigation from './components/Navigation';
-import HeroSection from './components/HeroSection';
-import AboutSection from './components/AboutSection';
-import MenuSection from './components/MenuSection';
-import BrewingSection from './components/BrewingSection';
-import EventsSection from './components/EventsSection';
-import GallerySection from './components/GallerySection';
-import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import RouteTransitions from './components/RouteTransitions';
+import Index from './pages/Index';
+import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
 
@@ -26,19 +23,20 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <div className="min-h-screen bg-background text-foreground">
-          <Navigation />
-          <main>
-            <HeroSection />
-            <AboutSection />
-            <MenuSection />
-            <BrewingSection />
-            <EventsSection />
-            <GallerySection />
-            <ContactSection />
-          </main>
-          <Footer />
-        </div>
+        <BrowserRouter>
+          <div className="min-h-screen bg-background text-foreground">
+            <Navigation />
+            <main>
+              <RouteTransitions>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </RouteTransitions>
+            </main>
+            <Footer />
+          </div>
+        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
