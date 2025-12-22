@@ -47,4 +47,5 @@ dist-ssr
 *.sln
 *.sw?
 
-Ideas.md 
+Ideas.md
+.env

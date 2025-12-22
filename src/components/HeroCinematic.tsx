@@ -165,11 +165,6 @@ const HeroCinematic: React.FC = () => {
               variants={fadeInUp}
               transition={{ delay: 0.2 }}
             >
-              <p className="text-elegant text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Where traditional brewing meets culinary artistry. Experience handcrafted beers, 
-                farm-to-table cuisine, and the warm hospitality that makes Golden Barrel a cornerstone 
-                of our community.
-              </p>
             </motion.div>
 
             {/* Primary CTAs with Hierarchy */}
@@ -309,42 +304,6 @@ const HeroCinematic: React.FC = () => {
             </div>
           </div>
         </div>
-      </motion.div>
-
-      {/* Scroll Indicator - Subtle, bottom right */}
-      <motion.div
-        className="absolute bottom-6 right-6 md:bottom-8 md:right-8 z-10"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-      >
-        <motion.button
-          onClick={() => scrollToSection('#about')}
-          className="group relative flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300"
-          aria-label="Scroll to about section"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {/* Subtle background circle - no border color change */}
-          <motion.div
-            className="absolute inset-0 rounded-full bg-background/50 backdrop-blur-sm border border-border/50 opacity-0 group-hover:opacity-100 -inset-2"
-            transition={{ duration: 0.3 }}
-          />
-          
-          {/* Text */}
-          <span className="text-xs font-medium uppercase tracking-widest relative z-10">
-            Scroll
-          </span>
-          
-          {/* Animated arrow - bouncing only */}
-          <motion.div
-            className="relative z-10"
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <ArrowDown className="h-4 w-4" />
-          </motion.div>
-        </motion.button>
       </motion.div>
     </section>
   );

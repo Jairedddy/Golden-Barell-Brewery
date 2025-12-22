@@ -121,19 +121,16 @@ const AboutSection: React.FC = () => {
     {
       name: 'Marcus Thompson',
       role: 'Master Brewer & Co-Founder',
-      bio: 'With 15 years of brewing expertise, Marcus brings innovative techniques to traditional recipes.',
       image: '/placeholder-team-1.jpg'
     },
     {
       name: 'Elena Rodriguez',
       role: 'Executive Chef & Co-Founder',
-      bio: 'Culinary artist specializing in beer-paired cuisine and farm-to-table experiences.',
       image: '/placeholder-team-2.jpg'
     },
     {
       name: 'James Mitchell',
       role: 'Head of Operations',
-      bio: 'Ensures every guest receives the exceptional hospitality Golden Barrel is known for.',
       image: '/placeholder-team-3.jpg'
     }
   ];
@@ -448,7 +445,6 @@ const AboutSection: React.FC = () => {
                 </motion.div>
                 <h4 className="text-lg font-semibold text-foreground mb-1">{member.name}</h4>
                 <p className="text-primary font-medium mb-3">{member.role}</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
               </motion.div>
             ))}
           </motion.div>

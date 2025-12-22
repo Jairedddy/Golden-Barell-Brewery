@@ -7,7 +7,6 @@ interface Beer {
   name: string;
   style: string;
   abv: string;
-  description: string;
 }
 
 const featuredBeers: Beer[] = [
@@ -15,25 +14,21 @@ const featuredBeers: Beer[] = [
     name: 'Golden Barrel Lager',
     style: 'Crisp Lager',
     abv: '4.8%',
-    description: 'Our signature crisp lager with honey notes and a smooth finish.',
   },
   {
     name: 'Copper Creek IPA',
     style: 'India Pale Ale',
     abv: '6.2%',
-    description: 'Hoppy India Pale Ale bursting with citrus and pine aromatics.',
   },
   {
     name: 'Midnight Porter',
     style: 'Rich Porter',
     abv: '5.5%',
-    description: 'Rich, dark porter with decadent chocolate and coffee undertones.',
   },
   {
     name: 'Harvest Wheat',
     style: 'Wheat Beer',
     abv: '4.5%',
-    description: 'Light and refreshing wheat beer with subtle spice notes and citrus.',
   },
 ];
 
@@ -107,9 +102,6 @@ const NowPouringCard: React.FC = () => {
             <span className="text-xs text-primary font-medium">•</span>
             <span className="text-sm text-primary font-medium">{currentBeer.abv} ABV</span>
           </div>
-          <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
-            {currentBeer.description}
-          </p>
         </motion.div>
       </AnimatePresence>
 

@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import RouteTransitions from './components/RouteTransitions';
+import Chatbot from './components/Chatbot';
 import Index from './pages/Index';
 import NotFound from './pages/NotFound';
 
@@ -35,6 +36,7 @@ const App = () => {
               </RouteTransitions>
             </main>
             <Footer />
+            <Chatbot />
           </div>
         </BrowserRouter>
       </TooltipProvider>

@@ -287,23 +287,6 @@ const ContactSection: React.FC = () => {
                 </Button>
               </motion.div>
             </form>
-
-            {/* Additional Info */}
-            <motion.div 
-              className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20"
-              initial={{ opacity: 0, y: 20 }}
-              animate={contactAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.3 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div className="text-sm text-muted-foreground">
-                  <p className="font-medium text-foreground">Quick Response Guarantee</p>
-                  <p>We typically respond to all inquiries within 24 hours during business days.</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>

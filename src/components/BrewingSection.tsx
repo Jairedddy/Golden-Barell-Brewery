@@ -142,11 +142,6 @@ const BrewingSection: React.FC = () => {
             <h3 className="text-2xl lg:text-3xl font-display font-semibold text-foreground mb-6">
               Quality You Can Taste
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Our commitment to excellence starts with ingredient selection and continues through 
-              every step of our brewing process. We believe that great beer is made with patience, 
-              precision, and passion.
-            </p>
             <motion.ul 
               className="space-y-3"
               initial="hidden"

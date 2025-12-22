@@ -230,7 +230,6 @@ const GallerySection: React.FC = () => {
         <SectionHeader
           subtitle="Visual Journey"
           title="Gallery"
-          description="Step inside Golden Barrel through our lens. From our gleaming copper tanks to mouthwatering dishes and the warm atmosphere that makes us special, discover what awaits you."
           className="mb-16"
         />
 
