@@ -21,7 +21,7 @@ const Chatbot: React.FC = () => {
     {
       id: 'welcome',
       role: 'assistant',
-      content: "Hello🍺! I'm here to help with questions about our hours, menu, events, reservations, or anything else. What can I help you with today?",
+      content: "Hello🍺! What can I help you with today?",
       timestamp: new Date(),
     },
   ]);

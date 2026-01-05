@@ -11,6 +11,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import SectionHeader from '@/components/SectionHeader';
 import ReservationWizard from '@/components/ReservationWizard';
 import { ReservationFormData } from '@/lib/reservation-schema';
+import InteractiveMap from '@/components/InteractiveMap';
 
 const ContactSection: React.FC = () => {
   const { toast } = useToast();
@@ -106,47 +107,6 @@ const ContactSection: React.FC = () => {
             animate={contactAnimation.isVisible ? "visible" : "hidden"}
             variants={fadeInLeft}
           >
-            <div>
-              <h3 className="text-2xl font-display font-semibold text-foreground mb-8">
-                Come Visit Our Taproom
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                Experience our full range of craft beers and farm-to-table cuisine in our 
-                welcoming taproom. Located in the heart of downtown, we're the perfect spot 
-                for everything from casual drinks to special celebrations.
-              </p>
-
-              {/* Reservation CTA */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="mb-8"
-              >
-                <Dialog open={isReservationOpen} onOpenChange={setIsReservationOpen}>
-                  <DialogTrigger asChild>
-                    <Button
-                      size="lg"
-                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
-                    >
-                      <Calendar className="h-5 w-5 mr-2" />
-                      Make a Reservation
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-                    <DialogHeader>
-                      <DialogTitle>Make a Reservation</DialogTitle>
-                      <DialogDescription>
-                        Book your table at Golden Barrel. We'll confirm your reservation shortly.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <ReservationWizard
-                      onClose={() => setIsReservationOpen(false)}
-                      onSuccess={handleReservationSuccess}
-                    />
-                  </DialogContent>
-                </Dialog>
-              </motion.div>
-            </div>
 
             {/* Contact Info Grid */}
             <motion.div 
@@ -184,37 +144,35 @@ const ContactSection: React.FC = () => {
               ))}
             </motion.div>
 
-            {/* Map Placeholder */}
+            {/* Interactive Map */}
             <motion.div 
               className="brew-card p-0 overflow-hidden"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="bg-muted h-64 flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <MapPin className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                  </motion.div>
-                  <p className="text-lg font-medium">Interactive Map</p>
-                  <p className="text-sm">123 Brewery Street, Portland, OR</p>
-                </div>
-              </div>
+              <InteractiveMap
+                address="123 Brewery Street, Portland, OR 97201"
+                coordinates={[45.5152, -122.6784]}
+                zoom={15}
+                height="400px"
+                className="rounded-lg"
+              />
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
-          <motion.div 
-            className="brew-card"
-            initial="hidden"
-            animate={contactAnimation.isVisible ? "visible" : "hidden"}
-            variants={fadeInRight}
-          >
-            <h3 className="text-xl font-semibold text-foreground mb-6">Send Us a Message</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Right Column: Contact Form & Reservation */}
+          <div className="space-y-6">
+             {/* Contact Form */}
+             <motion.div 
+               id="contact-form"
+               className="brew-card"
+               initial="hidden"
+               animate={contactAnimation.isVisible ? "visible" : "hidden"}
+               variants={fadeInRight}
+             >
+               <h3 className="text-xl font-semibold text-foreground mb-6">Send Us a Message</h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name and Email Row */}
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
@@ -327,7 +285,58 @@ const ContactSection: React.FC = () => {
                 </Button>
               </motion.div>
             </form>
-          </motion.div>
+            </motion.div>
+
+            {/* Make Reservation Section */}
+            <motion.div 
+              className="brew-card"
+              initial="hidden"
+              animate={contactAnimation.isVisible ? "visible" : "hidden"}
+              variants={fadeInRight}
+            >
+              <div className="text-center space-y-4">
+                <div>
+                  <div>
+              <h3 className="text-2xl font-display font-semibold text-foreground mb-8">
+              Experience our full range of craft beers and farm-to-table cuisine in our 
+              welcoming taproom.
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                
+              </p>
+            </div>
+                </div>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Dialog open={isReservationOpen} onOpenChange={setIsReservationOpen}>
+                    <DialogTrigger asChild>
+                      <Button
+                        size="lg"
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+                      >
+                        <Calendar className="h-5 w-5 mr-2" />
+                        Make a Reservation
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle>Make a Reservation</DialogTitle>
+                        <DialogDescription>
+                          Book your table at Golden Barrel. We'll confirm your reservation shortly.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <ReservationWizard
+                        onClose={() => setIsReservationOpen(false)}
+                        onSuccess={handleReservationSuccess}
+                      />
+                    </DialogContent>
+                  </Dialog>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -183,7 +183,6 @@ const AboutSection: React.FC = () => {
                 50+
               </motion.div>
               <div className="text-lg font-semibold text-foreground mb-1">Unique Brews</div>
-              <div className="text-muted-foreground">Crafted to perfection</div>
               
               <div className="grid grid-cols-2 gap-6 mt-8">
                 <motion.div 
@@ -237,9 +236,6 @@ const AboutSection: React.FC = () => {
                     <h3 className="text-lg font-semibold text-foreground">Most Loved Styles</h3>
                   </div>
                 </div>
-                <p className="mb-4 text-sm text-muted-foreground">
-                  Our community's top picks this season
-                </p>
                 <ChartContainer config={mostLovedConfig} className="h-[200px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={mostLovedStyles} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
@@ -283,9 +279,6 @@ const AboutSection: React.FC = () => {
                     <h3 className="text-lg font-semibold text-foreground">Peak Hours</h3>
                   </div>
                 </div>
-                <p className="mb-4 text-sm text-muted-foreground">
-                  When the taproom comes alive
-                </p>
                 <ChartContainer config={{ visitors: { label: 'Visitors', color: 'hsl(45, 85%, 60%)' } }} className="h-[200px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={peakVisitingHours} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
@@ -333,9 +326,6 @@ const AboutSection: React.FC = () => {
                     <h3 className="text-lg font-semibold text-foreground">Seasonal Trends</h3>
                   </div>
                 </div>
-                <p className="mb-4 text-sm text-muted-foreground">
-                  Preferences change with the seasons
-                </p>
                 <ChartContainer config={seasonalConfig} className="h-[200px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>

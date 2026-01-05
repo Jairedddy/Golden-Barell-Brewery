@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wine, Coffee } from 'lucide-react';
+import { Wine, IceCream, UtensilsCrossed, Utensils, ChefHat } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
@@ -292,7 +292,6 @@ const MenuSection: React.FC = () => {
         <SectionHeader
           subtitle="Culinary Excellence"
           title="Our Menu"
-          description="Discover our carefully crafted selection of artisan beers and farm-to-table cuisine, each dish thoughtfully paired to enhance your dining experience."
           className="mb-12"
         />
 
@@ -304,6 +303,7 @@ const MenuSection: React.FC = () => {
                 value="appetizers" 
                 className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-foreground/80 border border-border data-[state=active]:border-primary transition-all"
               >
+                <UtensilsCrossed className="h-4 w-4 mr-2" />
                 Appetizers
               </TabsTrigger>
             </motion.div>
@@ -312,6 +312,7 @@ const MenuSection: React.FC = () => {
                 value="mains" 
                 className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-foreground/80 border border-border data-[state=active]:border-primary transition-all"
               >
+                <Utensils className="h-4 w-4 mr-2" />
                 Main Courses
               </TabsTrigger>
             </motion.div>
@@ -329,7 +330,7 @@ const MenuSection: React.FC = () => {
                 value="desserts" 
                 className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-foreground/80 border border-border data-[state=active]:border-primary transition-all"
               >
-                <Coffee className="h-4 w-4 mr-2" />
+                <IceCream className="h-4 w-4 mr-2" />
                 Desserts
               </TabsTrigger>
             </motion.div>
@@ -338,6 +339,7 @@ const MenuSection: React.FC = () => {
                 value="chefs_special" 
                 className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-foreground/80 border border-border data-[state=active]:border-primary transition-all"
               >
+                <ChefHat className="h-4 w-4 mr-2" />
                 Chef's Special
               </TabsTrigger>
             </motion.div>
@@ -366,9 +368,6 @@ const MenuSection: React.FC = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-6">
-            Ready to experience our culinary artistry? Reserve your table today.
-          </p>
         </div>
       </div>
     </section>

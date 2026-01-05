@@ -94,7 +94,6 @@ const EventsSection: React.FC = () => {
         <SectionHeader
           subtitle="Join Us"
           title="Events & Experiences"
-          description="From intimate tastings to lively celebrations, there's always something happening at Golden Barrel. Join us for unforgettable experiences that bring our community together."
           className="mb-16"
         />
 
@@ -245,25 +244,20 @@ const EventsSection: React.FC = () => {
               <h3 className="text-2xl font-display font-semibold text-foreground mb-3">
                 Host Your Private Event
               </h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Looking to host a corporate event, wedding reception, or private party? Our dedicated events team 
-                will help create an unforgettable experience tailored to your needs.
-              </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8"
+                onClick={() => {
+                  const contactForm = document.getElementById('contact-form');
+                  if (contactForm) {
+                    contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
               >
-                Plan Your Event
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-primary text-primary hover:bg-primary/10 font-semibold px-8"
-              >
-                View Venue Options
+                Make Reservation
               </Button>
             </div>
           </div>

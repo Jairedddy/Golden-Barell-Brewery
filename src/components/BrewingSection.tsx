@@ -60,7 +60,6 @@ const BrewingSection: React.FC = () => {
         <SectionHeader
           subtitle="Craft & Quality"
           title="Our Brewing Process"
-          description="Every Golden Barrel beer is crafted using time-honored techniques and the finest ingredients. Our master brewer oversees each step to ensure exceptional quality and consistency in every pour."
           className="mb-16"
         />
 
