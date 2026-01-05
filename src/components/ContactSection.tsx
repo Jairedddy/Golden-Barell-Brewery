@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from '@/lib/animations';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import SectionHeader from '@/components/SectionHeader';
+import ReservationWizard from '@/components/ReservationWizard';
+import { ReservationFormData } from '@/lib/reservation-schema';
 
 const ContactSection: React.FC = () => {
   const { toast } = useToast();
   const headerAnimation = useScrollAnimation();
   const contactAnimation = useScrollAnimation();
+  const [isReservationOpen, setIsReservationOpen] = useState(false);
   
   const [formData, setFormData] = useState({
     name: '',
@@ -22,6 +26,11 @@ const ContactSection: React.FC = () => {
     subject: 'general'
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleReservationSuccess = (data: ReservationFormData) => {
+    // Reservation wizard handles its own success toast
+    // Could add additional logic here if needed
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -106,6 +115,37 @@ const ContactSection: React.FC = () => {
                 welcoming taproom. Located in the heart of downtown, we're the perfect spot 
                 for everything from casual drinks to special celebrations.
               </p>
+
+              {/* Reservation CTA */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="mb-8"
+              >
+                <Dialog open={isReservationOpen} onOpenChange={setIsReservationOpen}>
+                  <DialogTrigger asChild>
+                    <Button
+                      size="lg"
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+                    >
+                      <Calendar className="h-5 w-5 mr-2" />
+                      Make a Reservation
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle>Make a Reservation</DialogTitle>
+                      <DialogDescription>
+                        Book your table at Golden Barrel. We'll confirm your reservation shortly.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <ReservationWizard
+                      onClose={() => setIsReservationOpen(false)}
+                      onSuccess={handleReservationSuccess}
+                    />
+                  </DialogContent>
+                </Dialog>
+              </motion.div>
             </div>
 
             {/* Contact Info Grid */}
