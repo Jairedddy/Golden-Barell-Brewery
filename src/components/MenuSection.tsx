@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
-import { Wine, IceCream, UtensilsCrossed, Utensils, ChefHat } from 'lucide-react';
+import { Wine, IceCream, UtensilsCrossed, Utensils, ChefHat, Sparkles } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import SectionHeader from '@/components/SectionHeader';
+import FlavorFinderQuiz from '@/components/FlavorFinderQuiz';
+import { type BeerProfile } from '@/lib/flavor-engine';
 
 const MenuSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState('appetizers');
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
   const headerAnimation = useScrollAnimation();
+
+  const handleQuizComplete = (beers: BeerProfile[]) => {
+    // Track conversion: quiz completion → menu click
+    console.log('Quiz completed, recommended beers:', beers);
+    // Could add analytics tracking here
+  };
 
   const menuCategories = {
     appetizers: [
@@ -366,9 +377,55 @@ const MenuSection: React.FC = () => {
           </TabsContent>
         </Tabs>
 
-        {/* Call to Action */}
-        <div className="text-center mt-12">
-        </div>
+        {/* Flavor Finder Quiz CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mt-16"
+        >
+          <div className="brew-card bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border-primary/20">
+            <div className="text-center space-y-6 py-8">
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
+                <Sparkles className="h-8 w-8 text-primary" />
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-display font-semibold text-foreground mb-3">
+                  Find Your Perfect Beer
+                </h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Not sure which beer to try? Take our quick Flavor Finder quiz and discover 
+                  the perfect brew matched to your taste preferences, plus a recommended food pairing!
+                </p>
+              </div>
+
+              <Dialog open={isQuizOpen} onOpenChange={setIsQuizOpen}>
+                <DialogTrigger asChild>
+                  <Button
+                    size="lg"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8"
+                  >
+                    <Sparkles className="h-5 w-5 mr-2" />
+                    Take the Flavor Finder Quiz
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle>Flavor Finder Quiz</DialogTitle>
+                    <DialogDescription>
+                      Answer a few quick questions to discover your perfect beer match
+                    </DialogDescription>
+                  </DialogHeader>
+                  <FlavorFinderQuiz
+                    onComplete={handleQuizComplete}
+                    onClose={() => setIsQuizOpen(false)}
+                  />
+                </DialogContent>
+              </Dialog>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
