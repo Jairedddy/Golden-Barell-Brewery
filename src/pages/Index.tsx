@@ -6,6 +6,7 @@ import BrewingSection from '@/components/BrewingSection';
 import EventsSection from '@/components/EventsSection';
 import GallerySection from '@/components/GallerySection';
 import ContactSection from '@/components/ContactSection';
+import ExperienceBar from '@/components/ExperienceBar';
 
 const Index = () => {
   return (
@@ -17,6 +18,7 @@ const Index = () => {
       <EventsSection />
       <GallerySection />
       <ContactSection />
+      <ExperienceBar />
     </>
   );
 };

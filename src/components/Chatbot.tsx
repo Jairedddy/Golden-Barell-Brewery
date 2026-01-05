@@ -32,6 +32,13 @@ const Chatbot: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const reducedMotion = useReducedMotion();
 
+  // Sample questions to show before conversation starts
+  const sampleQuestions = [
+    "Do you have any events tonight?",
+    "What beers do you have on tap?",
+    "How do I make a reservation?",
+  ];
+
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
     if (isOpen && messagesEndRef.current) {
@@ -148,6 +155,17 @@ const Chatbot: React.FC = () => {
       setHasUnread(false);
     }
   };
+
+  const handleSampleQuestionClick = (question: string) => {
+    setInputValue(question);
+    // Focus the input after setting the value
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 50);
+  };
+
+  // Check if we should show sample questions (only welcome message exists)
+  const showSampleQuestions = messages.length === 1 && messages[0].id === 'welcome';
 
   // Show unread badge when message received while closed
   useEffect(() => {
@@ -288,6 +306,31 @@ const Chatbot: React.FC = () => {
                   </div>
                 </motion.div>
               ))}
+
+              {/* Sample Question Bubbles */}
+              {showSampleQuestions && (
+                <motion.div
+                  className="flex flex-wrap gap-2 mt-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.3 }}
+                >
+                  {sampleQuestions.map((question, index) => (
+                    <motion.button
+                      key={index}
+                      onClick={() => handleSampleQuestionClick(question)}
+                      className="px-3 py-2 text-xs lg:text-sm bg-background border border-border rounded-full text-foreground hover:bg-primary/10 hover:border-primary/50 transition-colors duration-200 text-left"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4 + index * 0.05, duration: 0.2 }}
+                    >
+                      {question}
+                    </motion.button>
+                  ))}
+                </motion.div>
+              )}
 
               {/* Typing Indicator */}
               {isTyping && (
