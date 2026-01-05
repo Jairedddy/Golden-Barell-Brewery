@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { fadeInUp } from '@/lib/animations';
 import NowPouringCard from './NowPouringCard';
+import Bubbles from './visual/Bubbles';
 
 const heroImage = "/images/hero-brewery.jpg";
 
@@ -105,6 +106,14 @@ const HeroCinematic: React.FC = () => {
             `,
             backgroundSize: '2px 2px'
           }}
+        />
+
+        {/* Bubble Particle System */}
+        <Bubbles 
+          density={0.4} 
+          intensity={0.3}
+          color="rgba(245, 158, 11, 0.25)"
+          maxBubbles={40}
         />
       </div>
 

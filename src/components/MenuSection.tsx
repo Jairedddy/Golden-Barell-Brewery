@@ -9,6 +9,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import SectionHeader from '@/components/SectionHeader';
 import FlavorFinderQuiz from '@/components/FlavorFinderQuiz';
 import { type BeerProfile } from '@/lib/flavor-engine';
+import Bubbles from '@/components/visual/Bubbles';
 
 const MenuSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState('appetizers');
@@ -239,7 +240,7 @@ const MenuSection: React.FC = () => {
         {items.map((item, index) => (
           <motion.div 
             key={item.id} 
-            className="brew-card relative group cursor-pointer"
+            className="brew-card relative group cursor-pointer overflow-hidden"
             variants={fadeInUp}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -250,8 +251,18 @@ const MenuSection: React.FC = () => {
               transition: { duration: 0.3 } 
             }}
           >
+            {/* Bubble effect on hover */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0">
+              <Bubbles 
+                density={0.3} 
+                intensity={0.4}
+                color="rgba(245, 158, 11, 0.2)"
+                maxBubbles={20}
+              />
+            </div>
+
             {/* Hover Shimmer Effect */}
-            <div className="absolute inset-0 overflow-hidden rounded-lg">
+            <div className="absolute inset-0 overflow-hidden rounded-lg z-0">
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"
                 initial={{ x: '-100%' }}
